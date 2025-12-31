@@ -1,26 +1,128 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-	--background: #ffffff;
-	--foreground: #171717;
+@theme {
+  --font-family-sans: var(--font-inter);
+  --font-family-display: var(--font-calsans);
+  --font-family-mono: var(--font-jetbrains);
+  --font-family-pixel: var(--font-pixel-r);
+  --font-family-pixeli: var(--font-pixel-i);
+
+  --animate-fade-in: fade-in 3s ease-in-out forwards;
+  --animate-fade-in-fast: fade-in 500ms ease-in-out forwards;
+  --animate-title: title 3s ease-out forwards;
+  --animate-fade-left: fade-left 3s ease-in-out forwards;
+  --animate-fade-right: fade-right 3s ease-in-out forwards;
 }
 
-@theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--font-sans: var(--font-geist-sans);
-	--font-mono: var(--font-geist-mono);
+@utility gradient-radial {
+  background-image: radial-gradient(50% 50% at 50% 50%, var(--tw-gradient-stops));
+}
+
+/* Keyframes */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes title {
+  0% {
+    line-height: 0%;
+    letter-spacing: 0.2em;
+    opacity: 0;
+  }
+  25% {
+    line-height: 10%;
+    letter-spacing: 0.1em;
+    opacity: 0;
+  }
+  50% {
+    line-height: 45%;
+    opacity: 1;
+  }
+  100% {
+    line-height: 100%;
+    opacity: 1;
+  }
+}
+
+@layer base {
+  .text-edge-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  }
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
-body {
-	background: var(--background);
-	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
+.default-bg {
+  background: hsla(238, 100%, 71%, 1);
+  background: radial-gradient(
+    circle at 24.1% 68.8%,
+    rgba(30, 30, 45, 1) 0%,
+    rgba(0, 0, 0, 1) 99.4%
+  );
+}
+
+.alt-bg {
+  background: linear-gradient(
+    109.6deg,
+    rgb(36, 45, 57) 11.2%,
+    rgb(16, 37, 60) 51.2%,
+    rgb(0, 0, 0) 98.6%
+  );
+}
+
+.dots-bg {
+  background-image: radial-gradient(#999 5%, transparent 0);
+}
+
+.blurry-text {
+  color: transparent;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
